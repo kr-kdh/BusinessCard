@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/tab_my"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="내 명합첩"/>
+    <item
+        android:id="@+id/tab_push"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:title="알림"/>
+
+    <item
+        android:id="@+id/tab_more"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:title="더보기" />
+</menu>

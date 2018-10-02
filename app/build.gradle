@@ -1,0 +1,96 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.2'
+    defaultConfig {
+        applicationId "kr.co.rusell.businesscard"
+        minSdkVersion rootProject.minSdk
+        targetSdkVersion rootProject.targetSdk
+        versionCode rootProject.versionCode
+        versionName rootProject.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+repositories {
+    mavenCentral()
+//    maven { url 'https://maven.fabric.io/public' }
+    maven { url "https://jitpack.io" }
+    maven { url "https://maven.google.com" }
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api project(':api')
+
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    /** Support Library */
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
+    implementation "com.google.android.material:material:1.0.0"
+    implementation 'androidx.multidex:multidex:2.0.0'
+
+
+    /** Test */
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+    androidTestImplementation  'org.koin:koin-test:1.0.1'
+
+
+
+    /** ktx */
+    implementation 'androidx.core:core-ktx:1.0.0'
+
+    /** Android Architecture Components */
+    implementation "android.arch.lifecycle:extensions:$rootProject.lifecycle_version"
+
+    /** Room */
+    implementation "android.arch.persistence.room:runtime:$rootProject.room_version"
+    implementation "android.arch.persistence.room:rxjava2:$rootProject.room_version"
+    annotationProcessor  "android.arch.persistence.room:compiler:$rootProject.room_version"
+    kapt "android.arch.persistence.room:compiler:$rootProject.room_version"
+
+    /** Koin */
+    implementation "org.koin:koin-core:$rootProject.koin_version"  // Koin for Kotlin
+    implementation "org.koin:koin-android:$rootProject.koin_version"  // Koin for Kotlin
+    implementation "org.koin:koin-androidx-scope:$rootProject.koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$rootProject.koin_version"
+
+
+    /** glide */
+    implementation "com.github.bumptech.glide:glide:$rootProject.glide_version"
+    implementation "jp.wasabeef:glide-transformations:$rootProject.glide_trans_version"
+
+
+    /** qr code **/
+    implementation "com.journeyapps:zxing-android-embedded:$rootProject.zxing_version"
+
+    /** Firebase */
+    implementation 'com.google.firebase:firebase-core:16.0.3'
+    implementation 'com.google.firebase:firebase-messaging:17.3.2'
+    implementation 'com.google.firebase:firebase-config:16.0.0'
+
+
+
+
+}
+apply plugin: 'com.google.gms.google-services'
